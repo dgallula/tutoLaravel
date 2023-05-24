@@ -23,8 +23,8 @@ Route::prefix('/blog')->name('blog.')->group(function () {
     Route::get('/',[\App\Http\Controllers\BlogController::class, 'index'])->name('index');
 
 
-    Route::get('/{slug}-{id}',[\App\Http\Controllers\BlogController::class, 'show'])->where([
-        'id'=>'[0-9]+',
+    Route::get('/{slug}-{post}',[\App\Http\Controllers\BlogController::class, 'show'])->where([
+        'post'=>'[0-9]+',
         'slug'=>'[a-z0-9\-]+'
     ])->name('show');
 
