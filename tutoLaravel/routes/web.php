@@ -21,7 +21,10 @@ Route ::get('/', function () {
 
 Route::prefix('/blog')->name('blog.')->group(function () {
     Route::get('/',[\App\Http\Controllers\BlogController::class, 'index'])->name('index');
-
+    Route::get('/new',[\App\Http\Controllers\BlogController::class,'create'])->name('create');
+    Route::post('/new',[\App\Http\Controllers\BlogController::class,'store']);
+    Route::get('/{post}/edit', [\App\Http\Controllers\BlogController::class,'edit'])->name('edit');
+    Route::patch('/{post}/edit', [\App\Http\Controllers\BlogController::class,'update']);
 
     Route::get('/{slug}-{post}',[\App\Http\Controllers\BlogController::class, 'show'])->where([
         'post'=>'[0-9]+',
@@ -30,6 +33,7 @@ Route::prefix('/blog')->name('blog.')->group(function () {
 
 
 });
+
 
 
 
