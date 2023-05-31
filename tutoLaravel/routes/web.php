@@ -19,7 +19,7 @@ Route ::get('/', function () {
 });
 
 
-Route::prefix('/blog')->name('blog.')->group(function () {
+Route::prefix('/blog')->name('blog.')->controller(\App\Http\Controllers\BlogController::class)->group(function () {
     Route::get('/',[\App\Http\Controllers\BlogController::class, 'index'])->name('index');
     Route::get('/new',[\App\Http\Controllers\BlogController::class,'create'])->name('create');
     Route::post('/new',[\App\Http\Controllers\BlogController::class,'store']);
